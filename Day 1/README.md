@@ -64,12 +64,11 @@ V_T = V_{T0} + \gamma(\sqrt{2\phi_f + V_{SB}} - \sqrt{2\phi_f})
 
 ## 🧠 Modes of Operation
 
-| Region | Condition | Description | Current Equation |
-|--------|------------|--------------|------------------|
-| Cut-off | \(V_{GS} < V_T\) | Channel OFF | \(I_D ≈ 0\) |
-| Linear / Triode | \(V_{GS} > V_T, V_{DS} < (V_{GS} - V_T)\) | Acts as resistor | \(I_D = K'(W/L)[(V_{GS}-V_T)V_{DS}-V_{DS}^2/2]\) |
-| Saturation | \(V_{DS} > (V_{GS}-V_T)\) | Channel pinch-off | \(I_D = ½K'(W/L)(V_{GS}-V_T)^2(1+λV_{DS})\) |
-
+| Region | Condition | Description | 
+|--------|------------|--------------|
+| Cut-off | \(Vgs < vt\) | Channel OFF |
+| Linear / Triode | \(V_{GS} > Vt, Vds < (Vgs - Vt)\) | Acts as resistor |
+| Saturation | \(vds > (Vgs-Vt)\) | Channel pinch-off | 
 🌀 **Pinch-off Phenomenon:**  
 Occurs when \(V_{GS}-V_{DS} < V_T\). The channel vanishes near the drain.
 
@@ -119,7 +118,7 @@ Vin in 0 2.5
 .dc Vds 0 1.8 0.05
 .plot dc I(M1)
 .end
-
+```
 ### 🧰 Day 1 Lab: NMOS ID–VDS Simulation
 🧩 Step 1: Install Ngspice
 ```
@@ -138,3 +137,55 @@ sudo apt install ngspice
 
 - sky130_fd_pr__nfet_01v8__tt.corner.spice → (W/L) ratios
 ```
+### 🧪 Step 3: Run the Simulation
+```
+- ngspice day1_nfet_idvds_L2_W5.spice
+```
+
+This runs the SPICE deck and outputs ID–VDS data.
+
+### 📈 DC Characteristics
+
+The ID–VDS curve distinctly shows three operating regions:
+
+| Region     | Condition                     | Behavior       |
+| ---------- | ----------------------------- | -------------- |
+| Cutoff     | VGS < VT                      | OFF            |
+| Linear     | VGS > VT and VDS < (VGS − VT) | Ohmic behavior |
+| Saturation | VDS ≥ (VGS − VT)              | Constant ID    |
+
+### 🔬 Device Physics & STA Correlation
+
+| Concept                       | Impact on Circuit Behavior                                |
+| ----------------------------- | --------------------------------------------------------- |
+| Threshold voltage (VT)        | Defines conduction onset → influences switching threshold |
+| Channel-length modulation (λ) | Causes slope in saturation → delay variation              |
+| Mobility degradation          | Reduces gm → affects timing                               |
+| Process corners               | Shift ID curves → impacts STA accuracy                    |
+
+🧠 These transistor behaviors form the foundation of .lib timing characterization used in synthesis and sign-off.
+
+| Parameter Change | Effect on Curve   | Design Impact    |
+| ---------------- | ----------------- | ---------------- |
+| ↓ VDD            | Curve shifts down | Slower switching |
+| ↑ VT (SS corner) | Lower ID          | Increased delay  |
+| ↓ VT (FF corner) | Higher ID         | Faster cells     |
+
+| Parameter      | Behavior             | Reason                    |
+| -------------- | -------------------- | ------------------------- |
+| ↑ VGS          | ↑ ID                 | Stronger inversion        |
+| ↑ VDS          | ID rises → saturates | Pinch-off                 |
+| λ              | Slope in saturation  | Channel-length modulation |
+| Process Corner | ID shift             | Process variation         |
+
+### 🏁 Key Takeaways
+
+- SPICE simulations validate transistor equations.
+
+- Saturation region defines drive strength → switching speed.
+
+- Parameters (VTO, λ, γ) form the basis of timing and power models.
+
+- This lab connects device physics → SPICE → library characterization → STA.
+  ### ✨ End of Day 1 – NMOS ID vs VDS Analysis using Ngspice (Sky130 PDK)
+  

@@ -21,7 +21,7 @@ We examined **drain current (ID)** versus **gate-to-source voltage (VGS)** for b
 
 | Device Type | Behavior | Key Equation / Observation |
 |--------------|-----------|----------------------------|
-| **Long-channel MOSFET** | Exhibits **quadratic** dependence on VGS above threshold. | \( ID = kn (Vgs - Vt)^2 \) (saturation region). |
+| **Long-channel MOSFET** | Exhibits **quadratic** dependence on VGS above threshold. | \( ID = kn(Vgs - Vt)^2 \)(saturation region). |
 | **Short-channel MOSFET** | Follows quadratic law at first, then transitions to **linear** dependence due to **velocity saturation**. | Current saturates earlier because carriers reach maximum velocity. |
 
 📈 **Observation:**  
@@ -53,8 +53,8 @@ This change directly influences switching speed and delay in CMOS circuits.
 
 | Condition | Device State | Resistance |
 |------------|--------------|-------------|
-| \(Vgs < Vt\) | OFF | Infinite |
-| \(Vgs > Vt) | ON | Finite |
+| (Vgs < Vt) | OFF | Infinite |
+| (Vgs > Vt) | ON | Finite |
 
 ### ⚙️ CMOS Structure Overview  
 
@@ -70,7 +70,7 @@ During transitions, both devices partially conduct, leading to **short-circuit c
 ### 2.1 Node & Device Voltages  
 
 \[
-\begin{aligned}
+begin
 Vgsn} &= Vin - Vss \\
 Vdsn &= Vout \\
 Vgsp &= Vin - Vdd \\

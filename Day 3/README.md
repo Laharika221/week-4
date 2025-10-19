@@ -117,7 +117,7 @@ From this, the **Vm** can be derived based on device parameters and W/L ratios.
 
 ### ⚡ VTC Simulation (DC Sweep)
 **Command:**
-```bash
+
 ngspice <filename.spice>
 
 

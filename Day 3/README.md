@@ -117,19 +117,19 @@ From this, the **Vm** can be derived based on device parameters and W/L ratios.
 
 ### ⚡ VTC Simulation (DC Sweep)
 **Command:**
-
+```
 ngspice <filename.spice>
+```
 
-
-🖥️ Terminal Output Screenshot
+### 🖥️ Terminal Output Screenshot
 
 Observation:
 
-Switching threshold (Vm) ≈ 0.879 V
+- Switching threshold (Vm) ≈ 0.879 V
 
-Symmetrical VTC → perfect for clock inverters
+- Symmetrical VTC → perfect for clock inverters
 
-⏱️ Transient Simulation
+### ⏱️ Transient Simulation
 
 Definition:
 Transient analysis studies circuit behavior during transitions from one steady state to another.

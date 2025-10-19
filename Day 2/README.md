@@ -21,7 +21,7 @@ We examined **drain current (ID)** versus **gate-to-source voltage (VGS)** for b
 
 | Device Type | Behavior | Key Equation / Observation |
 |--------------|-----------|----------------------------|
-| **Long-channel MOSFET** | Exhibits **quadratic** dependence on VGS above threshold. | \( I_D = k_n (V_{GS} - V_T)^2 \) (saturation region). |
+| **Long-channel MOSFET** | Exhibits **quadratic** dependence on VGS above threshold. | \( ID = kn (Vgs - Vt)^2 \) (saturation region). |
 | **Short-channel MOSFET** | Follows quadratic law at first, then transitions to **linear** dependence due to **velocity saturation**. | Current saturates earlier because carriers reach maximum velocity. |
 
 📈 **Observation:**  
@@ -31,12 +31,12 @@ Short-channel devices exhibit **early current saturation**, dominated by **veloc
 
 ### 1.2 Velocity Saturation — Definition  
 
-**Velocity saturation** occurs when carrier drift velocity no longer increases linearly with electric field, but **saturates** at a maximum value \(v_{sat}\).  
+**Velocity saturation** occurs when carrier drift velocity no longer increases linearly with electric field, but **saturates** at a maximum value \(vsat\).  
 
 | Electric Field | Carrier Velocity (v) | Region |
 |----------------|----------------------|--------|
 | Low | Linear increase | Mobility-controlled |
-| High | Saturates to \(v_{sat}\) | Velocity-saturated |
+| High | Saturates to \(vsat}\) | Velocity-saturated |
 
 📊 This effect is more prominent in **short-channel** devices and modifies the **ID–VGS** relationship from quadratic to near-linear.  
 
@@ -53,8 +53,8 @@ This change directly influences switching speed and delay in CMOS circuits.
 
 | Condition | Device State | Resistance |
 |------------|--------------|-------------|
-| \(V_{GS} < V_T\) | OFF | Infinite |
-| \(V_{GS} > V_T\) | ON | Finite |
+| \(Vgs < Vt\) | OFF | Infinite |
+| \(Vgs > Vt) | ON | Finite |
 
 ### ⚙️ CMOS Structure Overview  
 
@@ -71,12 +71,12 @@ During transitions, both devices partially conduct, leading to **short-circuit c
 
 \[
 \begin{aligned}
-V_{GSn} &= V_{in} - V_{SS} \\
-V_{DSn} &= V_{out} \\
-V_{GSp} &= V_{in} - V_{DD} \\
-V_{DSp} &= V_{out} - V_{DD} \\
-I_{DSp} &= - I_{DSn}
-\end{aligned}
+Vgsn} &= Vin - Vss \\
+Vdsn &= Vout \\
+Vgsp &= Vin - Vdd \\
+Vdsp &= Vout - Vdd \\
+Idsp &= - Idsp
+\end
 \]
 
 These relationships define current flow through each transistor for a given input/output pair.
@@ -85,8 +85,8 @@ These relationships define current flow through each transistor for a given inpu
 
 ## ⚡ 3. NMOS & PMOS I–V Characteristics  
 
-- **NMOS:** \( I_{dsn} vs V_{dsn} \) for various VGS.  
-- **PMOS:** \( I_{dsp} vs V_{dsp} \), noting opposite polarity.  
+- **NMOS:** \( Idsn vs Vdsn \) for various VGS.  
+- **PMOS:** \( Idsp} vs Vdsp \), noting opposite polarity.  
 
 These help in analyzing **pull-up (PMOS)** and **pull-down (NMOS)** strengths in the inverter.
 
@@ -97,8 +97,8 @@ These help in analyzing **pull-up (PMOS)** and **pull-down (NMOS)** strengths in
 ### 4.1 Procedure to Derive VTC  
 
 1. Identify operating regions (linear/saturation) of NMOS and PMOS.  
-2. Apply **current equilibrium:** \( I_{dsn} = − I_{dsp} \).  
-3. Solve for \(V_{OUT}\) as a function of \(V_{IN}\).  
+2. Apply **current equilibrium:** \( Idsn = − Idsp \).  
+3. Solve for \(Vout\) as a function of \(Vin\).  
 4. Tabulate and plot **VTC** curve.
 
 | VIN (V) | VOUT (V) | NMOS Region | PMOS Region |
@@ -115,7 +115,7 @@ These help in analyzing **pull-up (PMOS)** and **pull-down (NMOS)** strengths in
 
 - **Long-channel:** Quadratic ID–VGS → classic VTC shape.  
 - **Short-channel:** Velocity saturation → slightly flatter VTC slope.  
-- **Sizing (W/L):** Adjusts inverter switching threshold \(V_m\).  
+- **Sizing (W/L):** Adjusts inverter switching threshold \(Vm\).  
 
 ---
 
